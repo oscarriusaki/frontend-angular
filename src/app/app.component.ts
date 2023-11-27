@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,13 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  // http = inject(HttpClient)
+
+  // constructor(){
+  //   this.http.get('http://localhost:3000/api/clientes').subscribe(resp => {
+  //     console.log(resp)
+  //   })
+  // }
+
   title = 'cliente';
 }

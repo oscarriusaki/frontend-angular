@@ -1,0 +1,105 @@
+<div class="container text-center mt-5">
+
+    <h1>Clientes</h1>
+    <div class="col-md-12 p-2">
+        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#PruebaModal">
+            <i class="fa fa-save"></i> Nuevo Cliente
+        </button>
+        <table class="table mt-2 table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Paterno</th>
+                    <th>Materno</th>
+                    <th>Tipo de Documento</th>
+                    <th>Numero de Documento de Identidad</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Genero</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let item of listaCliente" >
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.paterno}}</td>
+                    <td>{{item.materno}}</td>
+                    <td>{{item.tipoDocumento}}</td>
+                    <td>{{item.numeroDocumento}}</td>
+                    <td>{{item.fechaNacimiento}}</td>
+                    <td>{{item.genero}}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#PruebaModal">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                        &nbsp;
+                        <button type="button" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="PruebaModal" tabindex="-1" aria-labelledby="PruebaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 *ngIf="!isUpdate" class="modal-title fs-5">Nuevo Cliente</h1>
+                <h1 *ngIf="isUpdate" class="modal-title fs-5">Actualizar Cliente</h1>
+                <button type="button"  class="btn-close" data-bs-dismiss="modal" arial-label="Close" (click)="nuevoCliente()"></button>
+            </div>
+            <div class="modal-body">
+                <form  >
+                    <div class="mb-3 row">
+                        <label class="col-sm-5 col-form-label">nombre: </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" formControlName="nombre">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-5 col-form-label">paterno: </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control"  formControlName="paterno">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-5 col-form-label">materno: </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control"  formControlName="materno">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-5 col-form-label">tipoDocumento: </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control"  formControlName="tipoDocumento">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-5 col-form-label">numeroDocumento: </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control"  formControlName="numeroDocumento">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-5 col-form-label">fechaNacimiento: </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" formControlName="fechaNacimiento">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label class="col-sm-5 col-form-label">genero: </label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" formControlName="genero">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                <button *ngIf="!isUpdate"  type="button" class="btn btn-success btn-sm">Guardar</button>
+                <button *ngIf="isUpdate" type="button" class="btn btn-warning btn-sm" (click)="selectItem()">Actualizar</button>
+            </div>
+        </div>
+    </div>
+</div>
